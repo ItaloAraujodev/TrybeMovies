@@ -1,20 +1,19 @@
-import React, { useState} from 'react';
+import React from 'react';
 import './App.css'
 import Home from './components/home/Home'
 import Nav from './components/nav/Nav';
-import cartContext from './context/context';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
-  const [topRated, setTopRated] = useState([])
-  const [popular, setPopular] = useState([])
+
 
   return (
     <div>
-      <cartContext.Provider value={{topRated, setTopRated, popular, setPopular}}>
-        <Nav />
-        <Home />
-      </cartContext.Provider>
+      <Nav />
+      <Routes>
+      <Route path="/" element={ <Home /> } />
+      </Routes>
     </div>
   )
 

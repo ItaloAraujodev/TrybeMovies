@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Card from './card'
-import cartContext from '../../context/context';
+import cartContext from '../../context/Context';
 import { apiTopRated, apiPopular } from '../../api';
 
 import './homeStyle.css';
@@ -8,28 +8,20 @@ import './homeStyle.css';
 const Home = () => {
   const { topRated, setTopRated } = useContext(cartContext);
   const { popular, setPopular } = useContext(cartContext);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
 
 
   useEffect(() => {
     const handle = async () => {
       const top = await apiTopRated()
+      const popular = await apiPopular()
       setTopRated(top)
-      setLoading(true)
+      setPopular(popular)
+      setLoading(false)
     }
     handle()
   }, [])
-
-  useEffect(() => {
-    const handlePopular = async () => {
-      const popular = await apiPopular()
-      setPopular(popular)
-      setLoading(true)
-    }
-    handlePopular()
-  }, [])
-
 
   return (
     <div className='container-fluid'>
@@ -39,15 +31,16 @@ const Home = () => {
       </div>
       <div className='container-fluid container-1'>
         <h2 className='title'>Mais Votado</h2>
-
+        {console.log(topRated.results)}
         <div>
-          {loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
+
+          {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>} */
         </div>
         
         <h2 className='title mt-4'>Mais Popular</h2>
 
         <div>
-          {loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
+          {!loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
         </div>
 
       </div>
