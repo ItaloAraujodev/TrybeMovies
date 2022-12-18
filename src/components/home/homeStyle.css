@@ -1,0 +1,88 @@
+.input {
+    width: 400px;
+    height: 40px;
+    border: none;
+    background-color: #47474E;
+    border-radius: 9px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.title {
+    color: white;
+}
+
+.input::placeholder {
+    color: white;
+}
+
+.btn-home {
+    width: 100px;
+    border: none;
+    background-color: #47474E;
+    border-radius: 9px;
+    color: white;
+}
+
+.container-1 {
+    margin-top: 80px;
+}
+
+.container-card {
+    overflow-x: auto;
+}
+
+.container-card::-webkit-scrollbar {
+    background-color: #47474E;
+    border-radius: 9px;
+    height: 10px;
+
+}
+
+.container-card::-webkit-scrollbar-thumb {
+    border-radius: 9px;
+    background-color: #1B1B1E;
+}
+
+.card-meu {
+    border: 1px solid red;
+    width: 220px;
+    height: 300px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.imagem-card {
+    width: 218px;
+    height: 215px;
+    object-fit: cover;
+    border-radius: 9px 9px 0 0;
+}
+
+.title-card {
+    font-size: 0.9rem;
+    color: white;
+}
+
+.itens-cards {
+    margin: 10px 0 0 10px;
+}
+
+.itens-cards p {
+    color: #47474E;
+    font-size: 12px;
+}
+
+.container-context {
+    position: relative;
+}
+
+.barra {
+    position: absolute;
+    bottom: -70px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    background: transparent;
+}
