@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React from 'react'
 import date from '../../utils/date'
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import Grafico from './Grafico';
 
 
 const card = (props) => {
@@ -15,21 +14,7 @@ const card = (props) => {
                         <div className='container-context'>
                             <img className='imagem-card' src={`${imagensMovides}${item.backdrop_path}`} alt={item.title} />
                             <div className='barra'>
-                                <CircularProgressbar
-                                    value={item.vote_average}
-                                    text={`${item.vote_average}`}
-                                    maxValue='10'
-                                    styles={{
-                                        path: {
-                                            // Path color
-                                            stroke: '#0018f4'
-                                        },
-                                        text: {
-                                            fill: '#ffffff',
-                                            fontSize: '35px'
-                                        },
-                                    }}
-                                />
+                                <Grafico item={item.vote_average} />
                             </div>
                         </div>
                         <div className='itens-cards'>
