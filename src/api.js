@@ -9,4 +9,12 @@ const apiTopRated = async () => {
     return result
 }
 
-export default apiTopRated
+const apiPopular = async () => {
+    const url = `${endPoint}popular?api_key=${key}&language=pt-br&page=1`
+    const res = await fetch(url);
+    const result = await res.json();
+    console.log(result)
+    return result
+}
+
+export { apiTopRated, apiPopular }
