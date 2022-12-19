@@ -5,4 +5,20 @@ const tratarDate = (date) => {
     return dataFormatada
 }
 
-export default tratarDate;
+
+const formatDateDia = (data) => {
+    let dataformt = new Date(data);
+    let dataFormatada = ((dataformt.getDate())) + "/" + ((dataformt.getMonth() + 1)) + "/" + dataformt.getFullYear();
+    return dataFormatada
+}
+
+const converter = (minutos) => {
+    const horas = Math.floor(minutos/ 60);          
+    const min = minutos % 60;
+    const textoHoras = (`00${horas}`).slice(-2);
+    const textoMinutos = (`00${min}`).slice(-2);
+    
+    return `${textoHoras }:${textoMinutos}`;
+  };
+
+export { tratarDate, formatDateDia, converter };

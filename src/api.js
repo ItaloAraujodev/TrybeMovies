@@ -13,8 +13,14 @@ const apiPopular = async () => {
     const url = `${endPoint}popular?api_key=${key}&language=pt-br&page=1`
     const res = await fetch(url);
     const result = await res.json();
-    console.log(result)
     return result
 }
 
-export { apiTopRated, apiPopular }
+const apiDetails = async (id) => {
+    const url = `${endPoint}${id}?api_key=${key}&language=pt-br`
+    const res = await fetch(url);
+    const result = await res.json();
+    return result;
+}
+
+export { apiTopRated, apiPopular, apiDetails }

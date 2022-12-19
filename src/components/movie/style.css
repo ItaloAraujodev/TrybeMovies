@@ -1,0 +1,32 @@
+.container-conteudo {
+    display: flex;
+    position: relative;
+    justify-content: start;
+    align-items: center;
+    
+    height: 600px;
+}
+
+.img-details {
+    width: 300px;
+    height: 500px;
+    border-radius: 9px;
+    margin: 0 40px 0 40px;
+}
+
+.paragrafo-2 {
+    color: rgb(160, 159, 159);
+    font-size: 0.9rem;
+    margin-top: -8px;
+    font-weight: 300;
+}
+
+.tagLine {
+    font-style: italic;
+    color: rgb(188, 187, 187);
+}
+
+.sinope-context {
+    width: 90%;
+    color: white;
+}

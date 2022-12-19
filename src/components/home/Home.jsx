@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import Card from './card'
+import Card from './Card'
 import cartContext from '../../context/Context';
 import { apiTopRated, apiPopular } from '../../api';
 
@@ -31,10 +31,9 @@ const Home = () => {
       </div>
       <div className='container-fluid container-1'>
         <h2 className='title'>Mais Votado</h2>
-        {console.log(topRated.results)}
         <div>
 
-          {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>} */
+          {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
         </div>
         
         <h2 className='title mt-4'>Mais Popular</h2>
