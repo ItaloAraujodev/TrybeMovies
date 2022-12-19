@@ -12,7 +12,7 @@ const Grafico = (props) => {
         styles={{
           path: {
             // Path color
-            stroke: '#0018f4'
+            stroke: '#ffffff'
           },
           text: {
             fill: '#ffffff',
