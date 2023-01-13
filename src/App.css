@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #27272A;
 }
 
+.geral {
+    background-color: #27272A;
+}

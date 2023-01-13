@@ -30,13 +30,13 @@ const Home = () => {
         <button className='btn-home'>Search</button>
       </div>
       <div className='container-fluid container-1'>
-        <h2 className='title'>Mais Votado</h2>
+        <h2 className='title'>Os Mais Votados</h2>
         <div>
 
           {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
         </div>
         
-        <h2 className='title mt-4'>Mais Popular</h2>
+        <h2 className='title mt-4'>Os Mais Populares</h2>
 
         <div>
           {!loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
