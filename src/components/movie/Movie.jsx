@@ -35,7 +35,6 @@ const Movie = () => {
 
   return (
     <div className='container-fluid'>
-      {console.log(details)}
       {!loading ? <div className='container-conteudo'>
         <div>
           <img src={`${imagensMovides}${details.poster_path}`} alt={details.title} className='img-details shadow' />

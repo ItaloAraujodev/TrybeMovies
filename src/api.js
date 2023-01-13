@@ -23,4 +23,11 @@ const apiDetails = async (id) => {
     return result;
 }
 
-export { apiTopRated, apiPopular, apiDetails }
+const apiSearch = async (nome) => {
+    const url = `https://api.themoviedb.org/3/search/company?api_key=${key}&query=${nome}&page=1`
+    const res = await fetch(url);
+    const result = await res.json();
+    return result;
+}
+
+export { apiTopRated, apiPopular, apiDetails, apiSearch }

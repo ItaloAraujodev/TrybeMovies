@@ -5,12 +5,15 @@ function Provider({ children }) {
 
     const [topRated, setTopRated] = useState([])
     const [popular, setPopular] = useState([])
+    const [searchResult, setSearchResult] = useState([]);
 
     const value = {
         topRated, 
         setTopRated,
         popular, 
         setPopular,
+        searchResult,
+        setSearchResult
     }
 
     return (

@@ -3,7 +3,7 @@ import './App.css'
 import Home from './components/home/Home'
 import Nav from './components/nav/Nav';
 import Movie from './components/movie/Movie'
-import Search from './components/Search';
+import Search from './components/Search/Search';
 import Footer from './components/footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 
