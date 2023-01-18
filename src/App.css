@@ -10,3 +10,13 @@
     overflow-x: hidden;
     background-color: #27272A;
 }
+
+.geral::-webkit-scrollbar {
+    background-color: #47474E;
+    border-radius: 9px;
+}
+
+.geral::-webkit-scrollbar-thumb {
+    border-radius: 9px;
+    background-color: #1B1B1E;
+}
