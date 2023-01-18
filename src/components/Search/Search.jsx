@@ -12,7 +12,7 @@ const Search = () => {
     <div className='container-fluid'>
       <div className='container-search'>
         <div className='filters'>
-          sadsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          sadsadaaaaaaaaaaa
         </div>
 
         <div className='search'>
