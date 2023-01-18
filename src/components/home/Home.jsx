@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Card from './Card'
 import cartContext from '../../context/Context';
 import { apiTopRated, apiPopular, apiSearch } from '../../api';
@@ -9,8 +9,10 @@ import './homeStyle.css';
 const Home = () => {
   const { topRated, setTopRated } = useContext(cartContext);
   const { popular, setPopular } = useContext(cartContext);
+  const { setSearchResult } = useContext(cartContext)
   const [loading, setLoading] = useState(true);
   const [search, setSearch ] = useState();
+
   const navigate = useNavigate();
 
   const onChange = ({target}) => {
@@ -20,12 +22,13 @@ const Home = () => {
 
   const searchRedirect = async () => {
     const result = await apiSearch(search);
-    console.log(result);
 
-    if(result.results.length > 0){
+    if(result.results.length > 0){ 
+      setSearchResult(result.results)
       navigate('/search')
     }
   }
+
 
   useEffect(() => {
     const handle = async () => {
