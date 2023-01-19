@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import cartContext from '../../context/Context';
+import { tratarDate } from '../../utils/date';
 import "./search.css"
 
 const Search = () => {
@@ -31,7 +32,7 @@ const Search = () => {
                 </div>
                 <div className='itens'>
                   <h3 style={{ color: 'white' }}>{item.title}</h3>
-                  <p style={{ color: '#a9a9ab' }}>{item.release_date}</p>
+                  <p style={{ color: '#a9a9ab' }}>{tratarDate(item.release_date)}</p>
                   <p style={{ color: 'white' }}>{item.overview}</p>
                 </div>
               </div>
