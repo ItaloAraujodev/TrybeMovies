@@ -15,21 +15,17 @@ const Search = () => {
   }
 
 
+
   return (
     <div className='container-fluid'>
       <div className='container-search'>
-        <div className='filters'>
-          sadsadaaaaaaaaaaa
-        </div>
-
-        <div className='search'>
-          {console.log(searchResult)}
+       <div className='search'>
           {searchResult.map((item, index) => (
             <div key={index} className='container-card' onClick={() => navigate(`/movie/${item.id}`)}>
               <div className='card-search'>
                 <div>
-                  <img src={`${imagensMovides}${item.poster_path}`} alt="" />
-                </div>
+                  <img src={`${imagensMovides}${item.poster_path}`} alt={item.title} />
+                </div> 
                 <div className='itens'>
                   <h3 style={{ color: 'white' }}>{item.title}</h3>
                   <p style={{ color: '#a9a9ab' }}>{tratarDate(item.release_date)}</p>
