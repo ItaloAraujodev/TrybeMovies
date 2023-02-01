@@ -4,6 +4,8 @@ import { apiDetails } from '../../api';
 import Loading from '../loading/Loading';
 import { formatDateDia, converter } from '../../utils/date'
 import './style.css';
+import Footer from '../footer/Footer';
+import Nav from '../nav/Nav';
 
 const Movie = () => {
   const imagensMovides = `https://image.tmdb.org/t/p/w500`;
@@ -34,7 +36,9 @@ const Movie = () => {
   
 
   return (
-    <div className='container-fluid'>
+    <div>
+      <Nav />
+      <div className='container-fluid'>
       {!loading ? <div className='container-conteudo'>
         <div>
           <img src={`${imagensMovides}${details.poster_path}`} alt={details.title} className='img-details shadow' />
@@ -50,6 +54,8 @@ const Movie = () => {
           </div>
         </div>
       </div> : <Loading />}
+    </div>
+    <Footer />
     </div>
   )
 }

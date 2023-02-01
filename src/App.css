@@ -12,6 +12,8 @@
 }
 
 .geral::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
     background-color: #47474E;
     border-radius: 9px;
 }

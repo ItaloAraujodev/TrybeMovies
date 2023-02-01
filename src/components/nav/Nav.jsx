@@ -1,7 +1,7 @@
 import React from 'react'
 import './navStyle.css';
 
-const nav = () => {
+const Nav = () => {
   return (
     <div className='d-flex justify-content-start align-items-center p-4 container-fluid bg'>
       <div className='container-nav'>
@@ -17,4 +17,4 @@ const nav = () => {
   )
 }
 
-export default nav
+export default Nav

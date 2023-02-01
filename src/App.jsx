@@ -1,22 +1,20 @@
 import React from 'react';
-import './App.css'
+import { Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home'
-import Nav from './components/nav/Nav';
 import Movie from './components/movie/Movie'
 import Search from './components/Search/Search';
-import Footer from './components/footer/Footer';
-import { Route, Routes } from 'react-router-dom';
+import NotFound from './components/NotFound';
+import './App.css'
 
 function App() {
   return (
     <div className='geral'>
-      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="movie/:id" element={<Movie />} />
         <Route path="search" element={<Search />} />
+        <Route path="/*" element={ <NotFound /> } />
       </Routes>
-      <Footer />
     </div>
   )
 

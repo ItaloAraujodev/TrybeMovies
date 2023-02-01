@@ -1,29 +1,31 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Card from './Card'
-import cartContext from '../../context/Context';
 import { apiTopRated, apiPopular, apiSearch } from '../../api';
+import cartContext from '../../context/Context';
+import Card from './Card'
+import Nav from '../nav/Nav';
 
 import './homeStyle.css';
+import Footer from '../footer/Footer';
 
 const Home = () => {
   const { topRated, setTopRated } = useContext(cartContext);
   const { popular, setPopular } = useContext(cartContext);
   const { setSearchResult } = useContext(cartContext)
   const [loading, setLoading] = useState(true);
-  const [search, setSearch ] = useState();
+  const [search, setSearch] = useState();
 
   const navigate = useNavigate();
 
-  const onChange = ({target}) => {
+  const onChange = ({ target }) => {
     const { value } = target;
     setSearch(value)
   }
 
   const searchRedirect = async () => {
     const result = await apiSearch(search);
-
-    if(result.results.length > 0){ 
+    console.log(result)
+    if (result.results.length > 0) {
       setSearchResult(result.results)
       navigate('/search')
     }
@@ -42,26 +44,29 @@ const Home = () => {
   }, [])
 
   return (
-    <div className='container-fluid'>
-      <div className='d-flex justify-content-center mt-5'>
-        <input className='input' type="text" onChange={ onChange } placeholder='Procure seu filme' />
-        <button className='btn-home' onClick={ searchRedirect }>Search</button>
-      </div>
-      <div className='container-fluid container-1'>
-        <h2 className='title'>Os Mais Votados</h2>
-        <div>
-
-          {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
+    <>
+      <Nav />
+      <div className='container-fluid'>
+        <div className='d-flex justify-content-center mt-5'>
+          <input className='input' type="text" onChange={onChange} placeholder='Procure seu filme' />
+          <button className='btn-home' onClick={searchRedirect}>Search</button>
         </div>
-        
-        <h2 className='title mt-4'>Os Mais Populares</h2>
+        <div className='container-fluid container-1 mt-5'>
+          <h2 className='title'>Os Mais Votados</h2>
+          <div>
 
-        <div>
-          {!loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
+            {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
+          </div>
+
+          <h2 className='title mt-4'>Os Mais Populares</h2>
+
+          <div>
+            {!loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
+          </div>
         </div>
-
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 
