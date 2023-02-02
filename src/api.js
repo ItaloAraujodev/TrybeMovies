@@ -30,4 +30,12 @@ const apiSearch = async (nome, page) => {
     return result;
 }
 
-export { apiTopRated, apiPopular, apiDetails, apiSearch }
+const apiElenco = async (id) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}&language=pt-BR`
+    const res = await fetch(url);
+    const result = await res.json();
+    console.log(result)
+    return result;
+}
+
+export { apiTopRated, apiPopular, apiDetails, apiSearch, apiElenco }

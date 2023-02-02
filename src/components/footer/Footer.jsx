@@ -1,31 +1,26 @@
 import React from 'react'
-import "./footer.css"
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
 const Footer = () => {
   return (
-    <div className='footer'>
-
-      <div className='footer-items'>
-        <div>
+    <footer className='w-full h-20 bg-temp text-white mt-6'>
+      <div className='flex flex-col items-center'>
+        <div className='text-center'>
           <p>Todos os direitos reservados</p>
           <p>&copy; Ítalo Araújo - {new Date().getFullYear()}</p>
         </div>
 
-        <div className='icones'>
-
+        <div className='flex mt-1'>
           <a href="https://github.com/ItaloAraujodev" target="_blank" style={{ textDecoration: 'none' }}>
-            <i className='icon'><AiFillGithub /></i>
+            <i className=''><AiFillGithub /></i>
           </a>
 
           <a href="https://www.linkedin.com/in/italoaraujodev/" target="_blank" style={{ textDecoration: 'none' }}>
             <i className='icon'><AiFillLinkedin /></i>
           </a>
-
         </div>
       </div>
-
-    </div>
+    </footer>
   )
 }
 

@@ -5,14 +5,13 @@ import cartContext from '../../context/Context';
 import Card from './Card'
 import Nav from '../../components/nav/Nav';
 
-import './homeStyle.css';
 import Footer from '../../components/footer/Footer';
 
 const Home = () => {
   const { topRated, setTopRated } = useContext(cartContext);
   const { popular, setPopular } = useContext(cartContext);
   const { setSearchResult } = useContext(cartContext)
-  const { paginacao , setPaginacao } = useContext(cartContext)
+  const { paginacao, setPaginacao } = useContext(cartContext)
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState();
 
@@ -32,7 +31,7 @@ const Home = () => {
     }
   }
 
-  
+
 
   useEffect(() => {
     const handle = async () => {
@@ -48,22 +47,21 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <div className='container-fluid'>
-        <div className='d-flex justify-content-center mt-5'>
-          <input className='input' type="text" onChange={onChange} placeholder='Procure seu filme' />
-          <button className='btn-home' onClick={searchRedirect}>Search</button>
+      <div className='w-full'>
+        <div className='flex justify-center mt-6'>
+          <input className='w-80 h-9 bg-temp-1 p-3 mr-2 placeholder-white text-white rounded' type="text" onChange={onChange} placeholder='Procure seu filme' />
+          <button className='w-24 h-9 rounded text-white bg-temp-1' onClick={searchRedirect}>Search</button>
         </div>
-        <div className='container-fluid container-1 mt-5'>
-          <h2 className='title'>Os Mais Votados</h2>
+        <div className='w-11/12 m-auto mt-10'>
           <div>
-
-            {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
-          </div>
-
-          <h2 className='title mt-4'>Os Mais Populares</h2>
-
-          <div>
-            {!loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
+            <h2 className='text-2xl text-white mb-4'>Os Mais Votados</h2>
+            <div>
+              {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
+            </div>
+            <h2 className='text-2xl text-white my-4'>Os Mais Populares</h2>
+            <div>
+              {!loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
+            </div>
           </div>
         </div>
       </div>

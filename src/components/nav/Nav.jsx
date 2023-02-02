@@ -1,15 +1,20 @@
 import React from 'react'
-import './navStyle.css';
 
 const Nav = () => {
   return (
-    <div className='d-flex justify-content-start align-items-center p-4 container-fluid bg'>
-      <div className='container-nav'>
-        <h2><a href="/">TrybeMovie</a></h2>
-        <div className='d-flex lista-container'>
-          <ul className='d-flex'>
-            <li><a href="/filmes">Filmes</a></li>
-            <li><a href="/series">Series</a></li>
+    <div className='w-full h-20 flex justify-center items-center bg-temp'>
+      <div className='w-11/12 flex items-end'>
+        <div>
+          <h1 className='text-white text-3xl'><a href="/">TrybeMovie</a></h1>
+        </div>
+        <div className=' text-white flex items-center ml-4'>
+          <ul>
+            <li className='inline-block mr-2'>
+              <a href="">Filmes</a>
+            </li>
+            <li className='inline-block'>
+              <a href="">Séries</a>
+            </li>
           </ul>
         </div>
       </div>
