@@ -3,15 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import { apiTopRated, apiPopular, apiSearch } from '../../api';
 import cartContext from '../../context/Context';
 import Card from './Card'
-import Nav from '../nav/Nav';
+import Nav from '../../components/nav/Nav';
 
 import './homeStyle.css';
-import Footer from '../footer/Footer';
+import Footer from '../../components/footer/Footer';
 
 const Home = () => {
   const { topRated, setTopRated } = useContext(cartContext);
   const { popular, setPopular } = useContext(cartContext);
   const { setSearchResult } = useContext(cartContext)
+  const { paginacao , setPaginacao } = useContext(cartContext)
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState();
 
@@ -24,13 +25,14 @@ const Home = () => {
 
   const searchRedirect = async () => {
     const result = await apiSearch(search);
-    console.log(result)
+
     if (result.results.length > 0) {
-      setSearchResult(result.results)
+      setSearchResult(result)
       navigate('/search')
     }
   }
 
+  
 
   useEffect(() => {
     const handle = async () => {

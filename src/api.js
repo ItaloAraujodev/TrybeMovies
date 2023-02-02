@@ -23,8 +23,8 @@ const apiDetails = async (id) => {
     return result;
 }
 
-const apiSearch = async (nome) => {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=pt-BR&query=${nome}&page=1&include_adult=false`
+const apiSearch = async (nome, page) => {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=pt-BR&query=${nome}&page=${page}&include_adult=false`
     const res = await fetch(url);
     const result = await res.json();
     return result;

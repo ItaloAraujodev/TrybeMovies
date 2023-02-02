@@ -1,30 +1,29 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import cartContext from '../../context/Context';
-import Nav from '../nav/Nav';
-import Footer from '../footer/Footer';
+import Nav from '../../components/nav/Nav';
+import Footer from '../../components/footer/Footer';
+import Loading from '../../components/loading/Loading';
 import { tratarDate } from '../../utils/date';
 import "./search.css"
+import { useEffect } from 'react';
+import { apiSearch } from '../../api';
 
 const Search = () => {
 
   const imagensMovides = `https://image.tmdb.org/t/p/w500`;
   const { searchResult, setSearchResult } = useContext(cartContext)
   const navigate = useNavigate();
-  console.log(searchResult)
-  function newRouter(id) {
-    navigate(`/movie/${id}`)
-  }
-
 
 
   return (
     <div>
+      
       <Nav />
       <div className='container-fluid'>
         <div className='container-search'>
           <div className='search'>
-            {searchResult.map((item, index) => (
+            {searchResult.results.map((item, index) => (
               <div key={index} className='container-card' onClick={() => navigate(`/movie/${item.id}`)}>
                 <div className='card-search'>
                   <div>

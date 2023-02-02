@@ -6,6 +6,7 @@ function Provider({ children }) {
     const [topRated, setTopRated] = useState([])
     const [popular, setPopular] = useState([])
     const [searchResult, setSearchResult] = useState([]);
+    const [paginacao , setPaginacao] = useState(3)
 
     const value = {
         topRated, 
@@ -13,7 +14,9 @@ function Provider({ children }) {
         popular, 
         setPopular,
         searchResult,
-        setSearchResult
+        setSearchResult,
+        paginacao,
+        setPaginacao
     }
 
     return (

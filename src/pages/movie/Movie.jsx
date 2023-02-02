@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { apiDetails } from '../../api';
-import Loading from '../loading/Loading';
+import Loading from '../../components/loading/Loading';
 import { formatDateDia, converter } from '../../utils/date'
 import './style.css';
-import Footer from '../footer/Footer';
-import Nav from '../nav/Nav';
+import Footer from '../../components/footer/Footer';
+import Nav from '../../components/nav/Nav';
 
 const Movie = () => {
   const imagensMovides = `https://image.tmdb.org/t/p/w500`;
@@ -46,7 +46,7 @@ const Movie = () => {
 
         <div>
           <h2 className='title'>{details.title} <span>({details.release_date.split('-')[0]})</span></h2>
-          <p className='paragrafo-2'>{formatDateDia(details.release_date)} ({details.production_countries[0].iso_3166_1}) <span className='ms-2'>-</span><span className='ms-2'>{jointDetails()}</span><span className='ms-2'>•</span> <span className='ms-2'>{converter(details.runtime)}</span></p>
+          <p className='paragrafo-2'>{formatDateDia(details.release_date)} <span className='ms-2'>-</span><span className='ms-2'>{jointDetails()}</span><span className='ms-2'>•</span> <span className='ms-2'>{converter(details.runtime)}</span></p> 
           <p className='tagLine'>{details.tagline}</p>
           <div className='sinope-context'>
             <h5>Sinopse</h5>
