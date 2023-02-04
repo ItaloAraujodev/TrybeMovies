@@ -43,47 +43,38 @@ const Movie = () => {
     <>
       <Nav />
       <div className='w-full'>
-          {!loading ? <div className='w-11/12 grid grid-cols-6 mx-auto mt-6 text-white '>
-            <div className='col-span-2'>
-              <img src={`${imagensMovides}${details.poster_path}`} alt={details.title} className='w-72 rounded' />
+          {!loading ? <div className='w-11/12 flex mx-auto mt-6 text-white '>
+            <div className='w-2/6'>
+              <img src={`${imagensMovides}${details.poster_path}`} alt={details.title} className='w-full rounded' />
             </div>
 
-            <div className='col-span-4 flex flex-col justify-center'>
+            <div className='w-8/12 flex flex-col justify-center ml-3 p-3'>
               <h2 className='text-3xl mt-2'>{details.title} <span>({details.release_date.split('-')[0]})</span></h2>
               <p className='text-base text-slate-400 mb-3'>{formatDateDia(details.release_date)} <span className='ms-2'>- </span><span className='ms-2'>{jointDetails()}</span><span className='ms-2'> •</span> <span className='ms-2'>{converter(details.runtime)}</span></p>
               <p className='italic text-temp-1 mb-3'>{details.tagline}</p>
-              <div className=''>
+              <div>
                 <h3 className='text-xl mb-3'>Sinopse</h3>
                 <p>{details.overview}</p>
               </div>
             </div>
           </div> : <Loading />}
         </div>
-        <div className=''>
-
-        <h2>Elenco principal</h2>
-          {/* <div className='elenco-conteudo'>
-              <div className="card-elenco" >
-                <img src={`${imagensMovides}${elenco.cast[0].profile_path}`} alt="" />
-                  <h4>{elenco.cast[0].name}</h4>
-              </div>
-
-              <div className="card-elenco" >
-              <img src={`${imagensMovides}${elenco.cast[1].profile_path}`} alt="" />
-                  <h4>{elenco.cast[1].name}</h4>
-              </div>
-
-              <div className="card-elenco" >
-                  <h4>{elenco.cast[2].name}</h4>
-              </div>
-
-            {elenco.cast.map((item, index) => (
-              <div key={index} className="card-elenco" >
-                <p>${item.name}</p>
+        <h2 className='w-11/12 text-white text-2xl mx-auto my-6'>Elenco principal</h2>
+        {!loading ? <div className='flex w-11/12  mx-auto scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
+          <div className='flex mb-8 '>
+             {elenco.cast.map((item, index) => (
+              <div key={index} className="w-40 h-72 mr-3 bg-temp rounded" >
+                <div>
+                  <img src={`${imagensMovides}${item.profile_path}`} alt="" className='w-full h-48 object-cover rounded-t'/>
+                </div>
+                <div className=' p-2'>
+                  <p className='text-white text-base'>{item.original_name}</p>
+                  <p className='text-temp-1 text-sm'>{item.character}</p>
+                </div>
               </div>
             ))}
-          </div> */}
-      </div>
+          </div>
+      </div> : <Loading />}
       <Footer />
     </>
   )

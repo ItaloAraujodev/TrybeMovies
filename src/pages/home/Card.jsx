@@ -9,7 +9,7 @@ const Card = (props) => {
     const imagensMovides = `https://image.tmdb.org/t/p/w500`;
 
     return (
-        <div className='flex scrollbar scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
+        <div className='flex scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
             <div className='flex mb-8'>
                 {props.array.results.map((item, index) => (
                     <div className='w-52 h-80 bg-temp mr-4 rounded relative' key={index}>
