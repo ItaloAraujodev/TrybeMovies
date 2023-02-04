@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { apiDetails, apiElenco } from '../../api';
 import Loading from '../../components/loading/Loading';
 import { formatDateDia, converter } from '../../utils/date'
-import './style.css';
 import Footer from '../../components/footer/Footer';
 import Nav from '../../components/nav/Nav';
 
@@ -37,34 +36,34 @@ const Movie = () => {
     return array.join(', ');
   }
 
-  const array = elenco.cast.slice(0, 15)
-  console.log(array)
+ /*  const array = elenco.cast > 0 && elenco.cast.slice(0, 15) */
+  console.log(elenco)
 
   return (
-    <div>
+    <>
       <Nav />
-      <div className=''>
-        <div className='backdor'>
-          {!loading ? <div className='container-conteudo '>
-            <div>
-              <img src={`${imagensMovides}${details.poster_path}`} alt={details.title} className='img-details shadow' />
+      <div className='w-full'>
+          {!loading ? <div className='w-11/12 grid grid-cols-6 mx-auto mt-6 text-white '>
+            <div className='col-span-2'>
+              <img src={`${imagensMovides}${details.poster_path}`} alt={details.title} className='w-72 rounded' />
             </div>
 
-            <div>
-              <h2 className='title'>{details.title} <span>({details.release_date.split('-')[0]})</span></h2>
-              <p className='paragrafo-2'>{formatDateDia(details.release_date)} <span className='ms-2'>-</span><span className='ms-2'>{jointDetails()}</span><span className='ms-2'>•</span> <span className='ms-2'>{converter(details.runtime)}</span></p>
-              <p className='tagLine'>{details.tagline}</p>
-              <div className='sinope-context'>
-                <h5>Sinopse</h5>
+            <div className='col-span-4 flex flex-col justify-center'>
+              <h2 className='text-3xl mt-2'>{details.title} <span>({details.release_date.split('-')[0]})</span></h2>
+              <p className='text-base text-slate-400 mb-3'>{formatDateDia(details.release_date)} <span className='ms-2'>- </span><span className='ms-2'>{jointDetails()}</span><span className='ms-2'> •</span> <span className='ms-2'>{converter(details.runtime)}</span></p>
+              <p className='italic text-temp-1 mb-3'>{details.tagline}</p>
+              <div className=''>
+                <h3 className='text-xl mb-3'>Sinopse</h3>
                 <p>{details.overview}</p>
               </div>
             </div>
           </div> : <Loading />}
         </div>
+        <div className=''>
+
         <h2>Elenco principal</h2>
-        <div className='elenco-container '>
-          <div className='elenco-conteudo'>
-              {/* <div className="card-elenco" >
+          {/* <div className='elenco-conteudo'>
+              <div className="card-elenco" >
                 <img src={`${imagensMovides}${elenco.cast[0].profile_path}`} alt="" />
                   <h4>{elenco.cast[0].name}</h4>
               </div>
@@ -76,18 +75,17 @@ const Movie = () => {
 
               <div className="card-elenco" >
                   <h4>{elenco.cast[2].name}</h4>
-              </div> */}
+              </div>
 
-            {array.map((item, index) => (
+            {elenco.cast.map((item, index) => (
               <div key={index} className="card-elenco" >
                 <p>${item.name}</p>
               </div>
             ))}
-          </div>
-        </div>
+          </div> */}
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 

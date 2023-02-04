@@ -5,7 +5,6 @@ import Nav from '../../components/nav/Nav';
 import Footer from '../../components/footer/Footer';
 import Loading from '../../components/loading/Loading';
 import { tratarDate } from '../../utils/date';
-import "./search.css"
 import { useEffect } from 'react';
 import { apiSearch } from '../../api';
 
