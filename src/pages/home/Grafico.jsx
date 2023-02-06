@@ -7,12 +7,17 @@ const Grafico = (props) => {
     <>
       <CircularProgressbar
         value={props.item}
-        text={`${props.item}`}
+        text={`${props.item.toFixed() * 10 }`}
         maxValue='10'
         styles={{
+          
           path: {
             // Path color
             stroke: '#ffffff'
+          },
+
+          trail: {
+            stroke: '#151718',
           },
           text: {
             fill: '#ffffff',

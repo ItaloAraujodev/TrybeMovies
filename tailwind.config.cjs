@@ -9,6 +9,10 @@ module.exports = {
       colors: {
         temp: "#151718",
         "temp-1": "#47474E"
+      },
+
+      boxShadow: {
+        'backPath': 'rgba(0, 0, 0, 0.6) 0px 12000px 60px 0px inset;'
       }
     },
   },

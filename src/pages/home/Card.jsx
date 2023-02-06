@@ -12,13 +12,13 @@ const Card = (props) => {
         <div className='flex scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
             <div className='flex mb-8'>
                 {props.array.results.map((item, index) => (
-                    <div className='w-52 h-80 bg-temp mr-4 rounded relative' key={index}>
+                    <div className='w-52 h-80 bg-temp mr-4 rounded-md relative' key={index}>
                         {props.array.results.length > 0 ?
                             <Link to={`movie/${item.id}`} style={{ textDecoration: 'none' }}>
                                 <div className="box-border">
-                                    <img className='w-52 h-52 object-cover' src={`${imagensMovides}${item.backdrop_path}`} alt={item.title} />
+                                    <img className='w-52 h-52 rounded-md object-cover' src={`${imagensMovides}${item.backdrop_path}`} alt={item.title} />
                                     <div className='w-8 absolute bottom-3 right-3'>
-                                        <Grafico item={item.vote_average} />
+                                        <Grafico item={ item.vote_average } />
                                     </div>
                                 </div>
                                 <div className='mt-2 p-2'>

@@ -48,7 +48,7 @@ const Home = () => {
     <>
       <Nav />
       <div className='w-full'>
-        <div className='flex justify-center mt-6'>
+        <div className='flex justify-center mt-14'>
           <input className='w-80 h-9 bg-temp-1 p-3 mr-2 placeholder-white text-white rounded' type="text" onChange={onChange} placeholder='Procure seu filme' />
           <button className='w-24 h-9 rounded text-white bg-temp-1' onClick={searchRedirect}>Search</button>
         </div>
