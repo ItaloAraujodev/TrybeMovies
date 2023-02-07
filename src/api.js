@@ -1,5 +1,6 @@
 const key = 'c2961477a1718f1c9d10112e20f4ff4f'
 const endPoint = `https://api.themoviedb.org/3/movie/`
+const imagensMovides = `https://image.tmdb.org/t/p/w500`;
 
 
 const apiTopRated = async () => {
@@ -34,8 +35,22 @@ const apiElenco = async (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}&language=pt-BR`
     const res = await fetch(url);
     const result = await res.json();
-    console.log(result)
     return result;
 }
 
-export { apiTopRated, apiPopular, apiDetails, apiSearch, apiElenco }
+const getVideo = async (id) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}&language=pt-BR`
+    const res = await fetch(url);
+    const result = await res.json();
+    return result;
+}
+
+const getImage = (path) => {
+    const url = `${imagensMovides}/${path}`
+    if(path === null || path === undefined){
+        return 'https://via.placeholder.com/300x450'
+    }
+    return url;
+} 
+
+export { apiTopRated, apiPopular, apiDetails, apiSearch, apiElenco, getVideo, getImage }
