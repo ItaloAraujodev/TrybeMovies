@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { tratarDate } from '../../utils/date'
 import Loading from '../../components/loading/Loading';
 import Grafico from './Grafico';
-import { getImage } from '../../api';
+import { getImage } from '../../utils/api';
 
 
 const Card = (props) => {
@@ -11,9 +11,8 @@ const Card = (props) => {
     return (
         <div className='md:flex  scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-y-hidden'>
             <div className='md:flex md:mb-9 '>
-                {props.array.results.map((item, index) => (
+                { !props.status && props.array.results.map((item, index) => (
                     <div className='md:w-52 md:h-96 md: mr-4 transition duration-500 hover:scale-105 rounded-md ' key={index}>
-                        {props.array.results.length > 0 ?
                             <Link to={`movie/${item.id}`} style={{ textDecoration: 'none' }}>
                                 <div>
                                     <img className='md:w-52 md:h-80 rounded-3xl object-cover' src={`${getImage(item.backdrop_path)}`} alt={item.title} />
@@ -28,8 +27,7 @@ const Card = (props) => {
                                         <Grafico item={item.vote_average} />
                                     </div>
                                 </div>
-                            </Link> : <Loading />
-                        }
+                            </Link>
                     </div>
                 ))}
             </div>

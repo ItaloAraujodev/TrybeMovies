@@ -6,7 +6,7 @@ import Footer from '../../components/footer/Footer';
 import Loading from '../../components/loading/Loading';
 import { tratarDate } from '../../utils/date';
 import { useEffect } from 'react';
-import { apiSearch } from '../../api';
+import { apiSearch } from '../../utils/api';
 
 const Search = () => {
 

@@ -47,10 +47,30 @@ const getVideo = async (id) => {
 
 const getImage = (path) => {
     const url = `${imagensMovides}/${path}`
-    if(path === null || path === undefined){
-        return 'https://via.placeholder.com/300x450'
-    }
     return url;
 } 
 
-export { apiTopRated, apiPopular, apiDetails, apiSearch, apiElenco, getVideo, getImage }
+const getResenhas = async (id) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${key}&language=pt-BR`
+    const res = await fetch(url);
+    const result = await res.json();
+    return result;
+}
+
+const getPalavrasChaves = async (id) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/keywords?api_key=${key}`
+    const res = await fetch(url);
+    const result = await res.json();
+    return result;
+} 
+
+const getRecomendations = async (id) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${key}&language=pt-BR&page=1`
+    const res = await fetch(url);
+    const result = await res.json();
+    return result;
+} 
+
+
+
+export { apiTopRated, apiPopular, apiDetails, apiSearch, apiElenco, getVideo, getImage, getResenhas, getPalavrasChaves , getRecomendations}

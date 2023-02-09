@@ -1,0 +1,4 @@
+.imagem {
+
+    backdrop-filter: blur(4px) saturate(150%);
+}

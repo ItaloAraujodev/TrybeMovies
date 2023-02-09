@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { apiTopRated, apiPopular, apiSearch } from '../../api';
+import { apiTopRated, apiPopular, apiSearch } from '../../utils/api';
 import cartContext from '../../context/Context';
 import Card from './Card'
 import Nav from '../../components/nav/Nav';
@@ -51,20 +51,20 @@ const Home = () => {
           <input className='md:w-80 md:h-9 bg-temp-1 p-4 placeholder-white text-white  focus:outline-none rounded-full' type="text" onChange={onChange} placeholder='Procure seu filme' />
           <button className='md:w-24 md:h-9 md:-ml-10 text-white font-bold bg-temp rounded-full' onClick={searchRedirect}>Search</button>
         </div>
-        <div className='md:w-11/12 md:m-auto md:mt-10'>
-          <div>
+         <div className='md:w-11/12 md:m-auto md:mt-10'>
+           <div>
+            <div>
             <h2 className='text-2xl text-white md:mb-4'>Os Mais Votados</h2>
-            <div>
-              {!loading ? <Card array={topRated} /> : <h2>Carregando...</h2>}
+               <Card array={topRated} status={loading} /> 
             </div>
-            <h2 className='text-2xl text-white md:my-4'>Os Mais Populares</h2>
             <div>
-              {!loading ? <Card array={popular} /> : <h2>Carregando...</h2>}
+                <h2 className='text-2xl text-white md:my-4'>Os Mais Populares</h2>
+               <Card array={popular} status={loading} />
             </div>
           </div>
         </div>
       </div>
-      <Footer />
+      {!loading ? <Footer /> : '' }
     </>
   )
 }
