@@ -1,6 +1,6 @@
 const key = 'c2961477a1718f1c9d10112e20f4ff4f'
 const endPoint = `https://api.themoviedb.org/3/movie/`
-const imagensMovides = `https://image.tmdb.org/t/p/w500`;
+const imagensMovides = `https://image.tmdb.org/t/p/`;
 
 
 const apiTopRated = async () => {
@@ -45,8 +45,8 @@ const getVideo = async (id) => {
     return result;
 }
 
-const getImage = (path) => {
-    const url = `${imagensMovides}/${path}`
+const getImage = (path, size = 'w300') => {
+    const url = `${imagensMovides}/${size}/${path}`
     return url;
 } 
 

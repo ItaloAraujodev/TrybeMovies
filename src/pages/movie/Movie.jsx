@@ -53,7 +53,7 @@ const Movie = () => {
   return (
     <>
       <Nav />
-      <div className='md:w-full md:py-12  bg-no-repeat bg-cover shadow-backPath rounded-md bg-center imagem' style={{ backgroundImage: `url(${getImage(details.backdrop_path)})`, backdropFilter: 'blur(2px)' }}>
+      <div className='md:w-full md:py-12  bg-no-repeat bg-cover shadow-backPath rounded-md bg-center imagem' style={{ backgroundImage: `url(${getImage(details.backdrop_path, 'original')})`}}>
         {!loading ? <div className='md:w-11/12 flex mx-auto text-white' >
           <div className='md:w-80 transition duration-500 hover:scale-105'>
             <img src={`${getImage(details.poster_path)}`} alt={details.title} className='md:w-full rounded-md' />
