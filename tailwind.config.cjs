@@ -12,7 +12,7 @@ module.exports = {
       },
 
       boxShadow: {
-        'backPath': 'rgba(0, 0, 0, 0.8) 0px 12000px 60px 0px inset;'
+        'backPath': 'rgba(0, 0, 0, 0.7) 0px 12000px 60px 0px inset;'
       }
     },
   },

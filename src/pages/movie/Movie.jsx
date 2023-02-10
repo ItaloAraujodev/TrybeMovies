@@ -39,8 +39,6 @@ const Movie = () => {
 
   }, [id])
 
-  console.log(recomendations)
-
   //Função para tratar o Array de generos e colocar  " , "
   const tratandoGeneros = () => {
     const array = [];
@@ -52,11 +50,10 @@ const Movie = () => {
   }
 
   //console.log(details)
-  console.log(resenhas)
   return (
     <>
       <Nav />
-      <div className='md:w-full md:py-12  bg-no-repeat bg-cover rounded-md bg-center shadow-backPath imagem' style={{ backgroundImage: `url(${getImage(details.backdrop_path)})`, backdropFilter: 'blur(2px)' }}>
+      <div className='md:w-full md:py-12  bg-no-repeat bg-cover shadow-backPath rounded-md bg-center imagem' style={{ backgroundImage: `url(${getImage(details.backdrop_path)})`, backdropFilter: 'blur(2px)' }}>
         {!loading ? <div className='md:w-11/12 flex mx-auto text-white' >
           <div className='md:w-80 transition duration-500 hover:scale-105'>
             <img src={`${getImage(details.poster_path)}`} alt={details.title} className='md:w-full rounded-md' />
@@ -111,18 +108,18 @@ const Movie = () => {
             </div>
         </div> : <Loading />}
 
-        {!loading && resenhas.results.length > 0 && <div className='md:w-11/12 mt-8 mx-auto'>
+         <div className='md:w-11/12 mt-8 mx-auto'>
           <div className='flex items-center'>
             <h2 className='text-3xl mr-6'>Social</h2>
             <ul className='flex text-1xl'>
-              <li className='mr-4 border-b-4'>Resenhas <span className='text-temp-1'>{resenhas.results.length}</span></li>
+              <li className='mr-4 border-b-4'>Resenhas <span className='text-temp-1'>{/* {resenhas.results !== undefined ? resenhas.results.length : '0'} */}0</span></li>
               <li>Discussões</li>
             </ul>
           </div>
           <div className='mt-4 border rounded-md'>
-            {resenhas.results.length > 0 ? <Movies results={resenhas} /> : <h3>Ainda não temos uma resenha para {resenhas.results.title}.</h3>}
+            {!loading && resenhas.results.length > 0 ? <Movies results={resenhas} status={loading} /> : <h3 className='p-3'>Ainda não temos uma resenha para <span className='font-medium italic'>{details.title}</span></h3>}
           </div>
-        </div>}
+        </div>
         
         {!loading && <div className='w-11/12 flex mx-auto overflow-y-auto mt-3 scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1'>
           <div>
