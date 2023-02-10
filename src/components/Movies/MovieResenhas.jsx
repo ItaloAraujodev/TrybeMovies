@@ -1,12 +1,11 @@
 import React from 'react'
 import { getImage } from '../../utils/api'
 import { tratarDate } from '../../utils/date'
+import { TiStar } from 'react-icons/ti';
 import './style.css'
 
 const Movies = (props) => {
     const { results, loading } = props
-
-
 
     const tratarTextoContent = () => {
         const text = results.results[0].content;
@@ -23,23 +22,24 @@ const Movies = (props) => {
         }
     }
 
-    console.log(tratarTextoContent()[1].length)
-
     return (
         <div className='w-full mt-2 flex p-7 rounded-sm '>
             <div className='w-16 h-16'>
                 <img src={getImage(results.results[0].author_details.avatar_path)} alt="" className=' w-16 h-16 rounded-full' />
             </div>
 
-            <div className='w-full ml-4 '>
+            <div className='w-full ml-4 text-white'>
                 <div>
                     <div className='flex items-center'>
                         <h2 className='text-xl font-bold'>Uma resenha por <span>{results.results[0].author}</span></h2>
-                        <span className='ml-4 w-16 h-6 text-center text-sm border-2 rounded-md'>{results.results[0].author_details.rating}</span>
+                        <div className='flex justify-center items-center ml-4 w-16 h-6 text-center text-sm border-2 border-temp-1 rounded-md'>
+                            <span className='mx-1'><TiStar /></span>
+                            <span className=''>{results.results[0].author_details.rating}</span>
+                        </div>
                     </div>
                     <p className='text-xs font-light' >Escrita por <span className='font-medium'>{results.results[0].author} </span>{tratarDate(results.results[0].updated_at)}</p>
 
-                    <div className='mt-4'>
+                    <div className='text-white mt-4'>
                         <h4 className='mb-3 font-bold'>{tratarTextoContent()[0]}</h4>
                         {tratarTextoContent()[1].length < 200 ? <p className='mb-3 text-white text-sm font-bold italic'>{tratarTextoContent()[1]}</p> : <p className='mb-3 font-ligh text-white texto text-sm'>{tratarTextoContent()[1]}</p>}
                         {tratarTextoContent()[1].length > 200 ? '' : <p className='texto text-sm' >{tratarTextoContent()[2]}</p>}

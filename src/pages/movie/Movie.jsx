@@ -109,20 +109,20 @@ const Movie = () => {
         </div> : <Loading />}
 
          <div className='md:w-11/12 mt-8 mx-auto'>
-          <div className='flex items-center'>
+          <div className='flex items-center text-white'>
             <h2 className='text-3xl mr-6'>Social</h2>
             <ul className='flex text-1xl'>
               <li className='mr-4 border-b-4'>Resenhas <span className='text-temp-1'>{/* {resenhas.results !== undefined ? resenhas.results.length : '0'} */}0</span></li>
               <li>Discussões</li>
             </ul>
           </div>
-          <div className='mt-4 border rounded-md'>
+          <div className='mt-4 border border-temp-1 rounded-md'>
             {!loading && resenhas.results.length > 0 ? <Movies results={resenhas} status={loading} /> : <h3 className='p-3'>Ainda não temos uma resenha para <span className='font-medium italic'>{details.title}</span></h3>}
           </div>
         </div>
         
         {!loading && <div className='w-11/12 flex mx-auto overflow-y-auto mt-3 scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1'>
-          <div>
+          <div className='text-white'>
             <h3 className='my-3 text-2xl'>Recomendações</h3>
             <div className='flex '>
             {recomendations.results.map((item, index) => (
