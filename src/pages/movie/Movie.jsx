@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import fotoIndis from '../../assets/fotoIndis.svg';
-import { apiDetails, apiElenco, getImage, getResenhas, getPalavrasChaves, getRecomendations } from '../../utils/api';
+import { apiDetails, apiElenco, getImage, getResenhas, getPalavrasChaves, getRecomendations, getAvaliaçoes } from '../../utils/api';
 import Loading from '../../components/loading/Loading';
 import { formatDateDia, converter } from '../../utils/date'
 import Footer from '../../components/footer/Footer';
@@ -39,6 +39,8 @@ const Movie = () => {
 
   }, [id])
 
+
+
   //Função para tratar o Array de generos e colocar  " , "
   const tratandoGeneros = () => {
     const array = [];
@@ -49,7 +51,6 @@ const Movie = () => {
     return array.join(', ');
   }
 
-  //console.log(details)
   return (
     <>
       <Nav />
@@ -89,9 +90,10 @@ const Movie = () => {
         </div> : <Loading />}
       </div>
     
-      <h2 className='md:w-11/12 text-white text-2xl md:mx-auto md:my-7'>Elenco principal</h2>
-      <div className='w-11/12 grid grid-cols-5'>
+      
+      <div className='w-11/12 grid grid-cols-5 md:mx-auto'>
         <div className='col-span-4'>
+        <h2 className='w-11/12 text-white text-2xl md:mx-auto md:my-7'>Elenco principal</h2>
           {!loading ? <div className='flex col-span-4 md:w-11/12 md:mx-auto scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
             <div className='flex mb-7 '>
               {elenco.cast.map((item, index) => (
@@ -117,7 +119,7 @@ const Movie = () => {
             </ul>
           </div>
           <div className='mt-4 border border-temp-1 rounded-md'>
-            {!loading && resenhas.results.length > 0 ? <Movies results={resenhas} status={loading} /> : <h3 className='p-3'>Ainda não temos uma resenha para <span className='font-medium italic'>{details.title}</span></h3>}
+            {!loading && resenhas.results.length > 0 ? <Movies results={resenhas} status={loading} /> : <h3 className='p-3 text-white'>Ainda não temos uma resenha para <span className='font-medium italic'>{details.title}</span></h3>}
           </div>
         </div>
         

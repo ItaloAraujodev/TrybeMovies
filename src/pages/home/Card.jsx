@@ -15,7 +15,7 @@ const Card = (props) => {
                     <div className='md:w-52 md:h-96 md: mr-4 transition duration-500 hover:scale-105 rounded-md ' key={index}>
                             <Link to={`movie/${item.id}`} style={{ textDecoration: 'none' }}>
                                 <div>
-                                    <img className='md:w-52 md:h-80 rounded-3xl object-cover' src={`${getImage(item.backdrop_path)}`} alt={item.title} />
+                                    <img className='md:w-52 md:h-80 rounded-3xl object-cover' src={`${getImage(item.backdrop_path, 'w500')}`} alt={item.title} />
                                 </div>
                                 <div className='md:flex justify-between items-center md:mt-2 md:p-2'>
                                     <div className='md:w-36'>

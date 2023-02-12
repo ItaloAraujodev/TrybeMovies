@@ -64,6 +64,13 @@ const getPalavrasChaves = async (id) => {
     return result;
 } 
 
+const getAvaliaçoes = async (id) => {
+    const url = `https://api.themoviedb.org/3/review/${id}?api_key=${key}`
+    const res = await fetch(url);
+    const result = await res.json();
+    return result;
+} 
+
 const getRecomendations = async (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${key}&language=pt-BR&page=1`
     const res = await fetch(url);
@@ -73,4 +80,4 @@ const getRecomendations = async (id) => {
 
 
 
-export { apiTopRated, apiPopular, apiDetails, apiSearch, apiElenco, getVideo, getImage, getResenhas, getPalavrasChaves , getRecomendations}
+export { apiTopRated, apiPopular, apiDetails, apiSearch, apiElenco, getVideo, getImage, getResenhas, getPalavrasChaves , getRecomendations, getAvaliaçoes}

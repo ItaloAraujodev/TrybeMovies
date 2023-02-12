@@ -5,7 +5,7 @@ const MovieDetailsLateral = (props) => {
     const { info, tags, resenhas } = props
 
     return (
-        <div className='text-white'>
+        <div className='text-white mt-24'>
             <div className='mb-5'>
                 <h4 className='font-bold'>Título original</h4>
                 <p className='font-light'>{info.original_title}</p>
@@ -34,7 +34,7 @@ const MovieDetailsLateral = (props) => {
             <div>
                 <h4 className='font-bold'>Palavras-chave</h4>
                 <div className='flex flex-wrap mt-4'>
-                    {tags.keywords.map((tag, index) => (
+                    {tags.keywords.slice(0, 26).map((tag, index) => (
                         <div key={index} className="m-1 ">
                             <p className='text-xs border border-temp-1 p-2 rounded-md'>{tag.name}</p>
                         </div>
