@@ -9,7 +9,7 @@ import { getImage } from '../../utils/api';
 const Card = (props) => {
 
     return (
-        <div className='md:flex  scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-y-hidden'>
+        <div className='md:flex scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-y-hidden'>
             <div className='md:flex md:mb-9 '>
                 { !props.status && props.array.results.map((item, index) => (
                     <div className='md:w-52 md:h-96 md: mr-4 transition duration-500 hover:scale-105 rounded-md ' key={index}>

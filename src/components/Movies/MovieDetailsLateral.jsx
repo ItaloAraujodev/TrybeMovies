@@ -3,7 +3,7 @@ import React from 'react'
 const MovieDetailsLateral = (props) => {
 
     const { info, tags, resenhas } = props
-
+    console.log(info)
     return (
         <div className='text-white mt-24'>
             <div className='mb-5'>
@@ -18,7 +18,7 @@ const MovieDetailsLateral = (props) => {
 
             <div className='mb-5'>
                 <h4 className='font-bold'>Idioma original</h4>
-                <p className='font-light'>{info.spoken_languages[0].english_name}</p>
+                <p className='font-light'>{info.spoken_languages.length > 0 ? info.spoken_languages[0].english_name : 'Vazio'}</p>
             </div>
 
             <div className='mb-5'>

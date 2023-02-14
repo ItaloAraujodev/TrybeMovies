@@ -25,7 +25,7 @@ const apiDetails = async (id) => {
 }
 
 const apiSearch = async (nome, page) => {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=pt-BR&query=${nome}&page=${page}&include_adult=false`
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=pt-BR&query=${nome}&include_adult=false`
     const res = await fetch(url);
     const result = await res.json();
     return result;

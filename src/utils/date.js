@@ -1,4 +1,7 @@
 const tratarDate = (date) => {
+    if(date === null || date === undefined){
+        return 'Vazio';
+    }
     const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
     let data = new Date(date)
     let dataFormatada = ((data.getDate()) + " de " + meses[(data.getMonth())] + " de " + data.getFullYear())

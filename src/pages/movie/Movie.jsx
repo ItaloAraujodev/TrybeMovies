@@ -91,12 +91,12 @@ const Movie = () => {
       </div>
     
       
-      <div className='w-11/12 grid grid-cols-5 md:mx-auto'>
+      <div className='w-full grid grid-cols-5 ml-2'>
         <div className='col-span-4'>
         <h2 className='w-11/12 text-white text-2xl md:mx-auto md:my-7'>Elenco principal</h2>
           {!loading ? <div className='flex col-span-4 md:w-11/12 md:mx-auto scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
             <div className='flex mb-7 '>
-              {elenco.cast.map((item, index) => (
+              {elenco.cast.length > 0 ? elenco.cast.map((item, index) => (
                 <div key={index} className="md:w-44 md:h-72 md:mr-3 border border-temp rounded-md" >
                   <div>
                     <img src={item.profile_path === null ? fotoIndis : `${getImage(item.profile_path)}`} alt={item.original_name} className='md:w-full h-48 object-cover rounded-t' />
@@ -106,11 +106,11 @@ const Movie = () => {
                     <p className='text-white md:font-light md:text-xs'>{item.character}</p>
                   </div>
                 </div>
-              ))}
+              )) : <h3 className='p-3 border-2 border-temp-1 rounded-md text-white'>Ainda não temos o elenco desse <span className='font-medium italic'>filme</span></h3>}
             </div>
         </div> : <Loading />}
 
-         <div className='md:w-11/12 mt-8 mx-auto'>
+         {!loading && <div className='md:w-11/12 mt-8 mx-auto'>
           <div className='flex items-center text-white'>
             <h2 className='text-3xl mr-6'>Social</h2>
             <ul className='flex text-1xl'>
@@ -121,13 +121,13 @@ const Movie = () => {
           <div className='mt-4 border border-temp-1 rounded-md'>
             {!loading && resenhas.results.length > 0 ? <Movies results={resenhas} status={loading} /> : <h3 className='p-3 text-white'>Ainda não temos uma resenha para <span className='font-medium italic'>{details.title}</span></h3>}
           </div>
-        </div>
+        </div>}
         
         {!loading && <div className='w-11/12 flex mx-auto overflow-y-auto mt-3 scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1'>
           <div className='text-white'>
             <h3 className='my-3 text-2xl'>Recomendações</h3>
             <div className='flex '>
-            {recomendations.results.map((item, index) => (
+                {recomendations.results.length > 0 ? recomendations.results.map((item, index) => (
               <div key={index} className='w-60 mr-4 rounded-md'>
                 <div>
                   <img src={getImage(item.backdrop_path)} alt="" className='w-60 md:h-36 object-cover rounded-md' />
@@ -137,7 +137,7 @@ const Movie = () => {
                   <span>{item.vote_average.toFixed(1) * 10}%</span>
                 </div>
               </div>
-            ))}
+            )): <h3 className='p-4 border-2 border-temp-1 rounded-md text-white'>Ainda não temos nenhuma recomendação para esse <span className='font-medium italic'>filme</span></h3> }
             </div>
           </div>
         </div>}

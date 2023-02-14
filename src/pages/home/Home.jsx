@@ -23,8 +23,8 @@ const Home = () => {
 
   const searchRedirect = async () => {
     const result = await apiSearch(search);
-
-    if (result.results.length > 0) {
+    console.log(result)
+    if (!loading && result.results.length > 0) {
       setSearchResult(result)
       navigate('/search')
     }
