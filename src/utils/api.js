@@ -1,6 +1,9 @@
+import semImagem from '../assets/semImagem.svg'
+
 const key = 'c2961477a1718f1c9d10112e20f4ff4f'
 const endPoint = `https://api.themoviedb.org/3/movie/`
 const imagensMovides = `https://image.tmdb.org/t/p/`;
+
 
 
 const apiTopRated = async () => {
@@ -47,6 +50,9 @@ const getVideo = async (id) => {
 
 const getImage = (path, size = 'w300') => {
     const url = `${imagensMovides}/${size}/${path}`
+    if(!path){
+        return semImagem;
+    }
     return url;
 } 
 

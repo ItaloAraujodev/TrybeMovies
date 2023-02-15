@@ -130,7 +130,7 @@ const Movie = () => {
                 {recomendations.results.length > 0 ? recomendations.results.map((item, index) => (
               <div key={index} className='w-60 mr-4 rounded-md'>
                 <div>
-                  <img src={getImage(item.backdrop_path)} alt="" className='w-60 md:h-36 object-cover rounded-md' />
+                  <img src={getImage(item.backdrop_path)} alt="" className={`w-60 md:h-36 object-cover rounded-md ${!item.backdrop_path && 'w-32 mx-auto'}`} />
                 </div>
                 <div className='text-sm  mt-1 flex justify-between'>
                   <h4>{item.title}</h4>

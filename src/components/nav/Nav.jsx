@@ -7,16 +7,6 @@ const Nav = () => {
         <div>
           <h1 className='text-white text-3xl'><a href="/">TrybeMovie</a></h1>
         </div>
-        <div className=' text-white flex items-center ml-4'>
-          <ul>
-            <li className='inline-block mr-2'>
-              <a href="">Filmes</a>
-            </li>
-            <li className='inline-block'>
-              <a href="">Séries</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   )

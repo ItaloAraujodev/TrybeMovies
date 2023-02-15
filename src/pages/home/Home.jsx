@@ -48,8 +48,8 @@ const Home = () => {
       <Nav />
       <div className='md:w-full'>
         <div className='md:flex md:justify-center md:mt-14'>
-          <input className='md:w-80 md:h-9 bg-temp-1 p-4 placeholder-white text-white  focus:outline-none rounded-full' type="text" onChange={onChange} placeholder='Procure seu filme' />
-          <button className='md:w-24 md:h-9 md:-ml-10 text-white font-bold bg-temp rounded-full' onClick={searchRedirect}>Search</button>
+          <input className='md:w-96 md:h-9 bg-temp-1 p-4 placeholder-white text-white  focus:outline-none rounded-full' type="text" onChange={onChange} placeholder='Procure seu filme' />
+          <button className='md:w-28 md:h-9 md:-ml-10 text-white font-bold bg-temp rounded-full' onClick={searchRedirect}>Search</button>
         </div>
          <div className='md:w-11/12 md:m-auto md:mt-10'>
            <div>
