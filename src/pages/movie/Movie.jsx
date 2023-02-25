@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Blurhash } from 'react-blurhash';
 import { useParams } from 'react-router-dom';
 import fotoIndis from '../../assets/fotoIndis.svg';
 import { apiDetails, apiElenco, getImage, getResenhas, getPalavrasChaves, getRecomendations, getAvaliaçoes } from '../../utils/api';
@@ -18,6 +19,7 @@ const Movie = () => {
   const [resenhas, setResenhas] = useState()
   const [palavrasChaves, setPalavrasChaves] = useState([])
   const [recomendations, setRecomendations] = useState([])
+  const [isLoaded, setIsLoaded] = useState(true)
   const { id } = useParams();
 
   useEffect(() => {
@@ -39,8 +41,6 @@ const Movie = () => {
 
   }, [id])
 
-
-
   //Função para tratar o Array de generos e colocar  " , "
   const tratandoGeneros = () => {
     const array = [];
@@ -52,12 +52,13 @@ const Movie = () => {
   }
 
   return (
-    <>
+    <div>
       <Nav />
       <div className='md:w-full md:py-12  bg-no-repeat bg-cover shadow-backPath rounded-md bg-center imagem' style={{ backgroundImage: `url(${getImage(details.backdrop_path, 'original')})`}}>
         {!loading ? <div className='md:w-11/12 flex mx-auto text-white' >
           <div className='md:w-80 transition duration-500 hover:scale-105'>
-            <img src={`${getImage(details.poster_path)}`} alt={details.title} className='md:w-full rounded-md' />
+            {isLoaded && <Loading />}
+            <img src={`${getImage(details.poster_path)}`} alt={details.title} loading='lazy' onLoad={ () => setIsLoaded(false) } className='md:w-full rounded-md' />
           </div>
 
           <div className='md:w-8/12 md:flex md:flex-col md:justify-center md:ml-3 md:p-3'>
@@ -89,17 +90,18 @@ const Movie = () => {
           </div>
         </div> : <Loading />}
       </div>
-    
+
       
       <div className='w-full grid grid-cols-5 ml-2'>
         <div className='col-span-4'>
         <h2 className='w-11/12 text-white text-2xl md:mx-auto md:my-7'>Elenco principal</h2>
-          {!loading ? <div className='flex col-span-4 md:w-11/12 md:mx-auto scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
+           <div className='flex col-span-4 md:w-11/12 md:mx-auto scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1 overflow-x-auto'>
             <div className='flex mb-7 '>
-              {elenco.cast.length > 0 ? elenco.cast.map((item, index) => (
+              {!loading && elenco.cast.length > 0 ? elenco.cast.map((item, index) => (
                 <div key={index} className="md:w-44 md:h-72 md:mr-3 border border-temp rounded-md" >
                   <div>
-                    <img src={item.profile_path === null ? fotoIndis : `${getImage(item.profile_path)}`} alt={item.original_name} className='md:w-full h-48 object-cover rounded-t' />
+                    { isLoaded && <Loading /> }
+                    <img src={item.profile_path === null ? fotoIndis : `${getImage(item.profile_path)}`} alt={item.original_name} onLoad={ () => setIsLoaded(false) } className='md:w-full h-48 object-cover rounded-t' />
                   </div>
                   <div className='md:p-2'>
                     <p className='text-white md:text-base'>{item.original_name}</p>
@@ -108,9 +110,9 @@ const Movie = () => {
                 </div>
               )) : <h3 className='p-3 border-2 border-temp-1 rounded-md text-white'>Ainda não temos o elenco desse <span className='font-medium italic'>filme</span></h3>}
             </div>
-        </div> : <Loading />}
+        </div>
 
-         {!loading && <div className='md:w-11/12 mt-8 mx-auto'>
+         <div className='md:w-11/12 mt-8 mx-auto'>
           <div className='flex items-center text-white'>
             <h2 className='text-3xl mr-6'>Social</h2>
             <ul className='flex text-1xl'>
@@ -121,16 +123,16 @@ const Movie = () => {
           <div className='mt-4 border border-temp-1 rounded-md'>
             {!loading && resenhas.results.length > 0 ? <Movies results={resenhas} status={loading} /> : <h3 className='p-3 text-white'>Ainda não temos uma resenha para <span className='font-medium italic'>{details.title}</span></h3>}
           </div>
-        </div>}
+        </div>
         
-        {!loading && <div className='w-11/12 flex mx-auto overflow-y-auto mt-3 scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1'>
+        <div className='w-11/12 flex mx-auto overflow-y-auto mt-3 scrollbar-thin scrollbar-thumb-temp scrollbar-track-temp-1'>
           <div className='text-white'>
             <h3 className='my-3 text-2xl'>Recomendações</h3>
             <div className='flex '>
-                {recomendations.results.length > 0 ? recomendations.results.map((item, index) => (
-              <div key={index} className='w-60 mr-4 rounded-md'>
+                { !loading && recomendations.results.length > 0 ? recomendations.results.map((item, index) => (
+              <div key={index} className='w-60 mr-4 rounded-md mb-4 '>
                 <div>
-                  <img src={getImage(item.backdrop_path)} alt="" className={`w-60 md:h-36 object-cover rounded-md ${!item.backdrop_path && 'w-32 mx-auto'}`} />
+                  <img src={getImage(item.backdrop_path)} alt="" loading='lazy' className={`w-60 md:h-36 object-cover rounded-md ${!item.backdrop_path && 'w-32 mx-auto'}`} />
                 </div>
                 <div className='text-sm  mt-1 flex justify-between'>
                   <h4>{item.title}</h4>
@@ -140,7 +142,7 @@ const Movie = () => {
             )): <h3 className='p-4 border-2 border-temp-1 rounded-md text-white'>Ainda não temos nenhuma recomendação para esse <span className='font-medium italic'>filme</span></h3> }
             </div>
           </div>
-        </div>}
+        </div>
 
         </div>
 
@@ -151,7 +153,8 @@ const Movie = () => {
       </div>
 
       {!loading && <Footer />}
-    </>
+  
+    </div>
   )
 }
 
