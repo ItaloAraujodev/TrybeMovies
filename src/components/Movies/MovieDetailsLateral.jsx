@@ -1,9 +1,8 @@
 import React from 'react'
 
 const MovieDetailsLateral = (props) => {
+    const { info, tags } = props
 
-    const { info, tags, resenhas } = props
-    console.log(info)
     return (
         <div className='text-white mt-24'>
             <div className='mb-5'>

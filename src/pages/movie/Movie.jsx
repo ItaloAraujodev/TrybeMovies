@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Blurhash } from 'react-blurhash';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import fotoIndis from '../../assets/fotoIndis.svg';
-import { apiDetails, apiElenco, getImage, getResenhas, getPalavrasChaves, getRecomendations, getAvaliaçoes } from '../../utils/api';
+import { apiDetails, apiElenco, getImage, getResenhas, getPalavrasChaves, getRecomendations } from '../../utils/api';
 import Loading from '../../components/loading/Loading';
 import { formatDateDia, converter } from '../../utils/date'
 import Footer from '../../components/footer/Footer';
@@ -13,6 +13,8 @@ import MovieDetailsLateral from '../../components/Movies/MovieDetailsLateral';
 import './style.css';
 
 const Movie = () => {
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState([]);
   const [elenco, setElenco] = useState([]);
@@ -50,6 +52,8 @@ const Movie = () => {
 
     return array.join(', ');
   }
+
+  console.log(resenhas)
 
   return (
     <div>
@@ -116,7 +120,7 @@ const Movie = () => {
           <div className='flex items-center text-white'>
             <h2 className='text-3xl mr-6'>Social</h2>
             <ul className='flex text-1xl'>
-              <li className='mr-4 border-b-4'>Resenhas <span className='text-temp-1'>{/* {resenhas.results !== undefined ? resenhas.results.length : '0'} */}0</span></li>
+              <li className='mr-4 border-b-4'>Resenhas <span className='text-temp-1 font-bold ml-1'>{ !loading && resenhas.results.length }</span></li>
               <li>Discussões</li>
             </ul>
           </div>
@@ -130,7 +134,12 @@ const Movie = () => {
             <h3 className='my-3 text-2xl'>Recomendações</h3>
             <div className='flex '>
                 { !loading && recomendations.results.length > 0 ? recomendations.results.map((item, index) => (
-              <div key={index} className='w-60 mr-4 rounded-md mb-4 '>
+              <div key={index} className='w-60 mr-4 rounded-md mb-4 cursor-pointer' onClick={() => { 
+                
+                navigate(`/movie/${item.id}`)
+                window.location.reload();
+              
+              }}>
                 <div>
                   <img src={getImage(item.backdrop_path)} alt="" loading='lazy' className={`w-60 md:h-36 object-cover rounded-md ${!item.backdrop_path && 'w-32 mx-auto'}`} />
                 </div>

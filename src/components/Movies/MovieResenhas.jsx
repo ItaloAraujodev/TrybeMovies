@@ -2,7 +2,7 @@ import React from 'react'
 import { getImage } from '../../utils/api'
 import { tratarDate } from '../../utils/date'
 import { TiStar } from 'react-icons/ti';
-import './style.css'
+import './styleText.css'
 
 const Movies = (props) => {
     const { results, loading } = props
@@ -41,7 +41,7 @@ const Movies = (props) => {
 
                     <div className='text-white mt-4'>
                         <h4 className='mb-3 font-bold'>{tratarTextoContent()[0]}</h4>
-                        {tratarTextoContent()[1].length < 200 ? <p className='mb-3 text-white text-sm font-bold italic'>{tratarTextoContent()[1]}</p> : <p className='mb-3 font-ligh text-white texto text-sm'>{tratarTextoContent()[1]}</p>}
+                        {/* ERRORR */}{tratarTextoContent()[1].length < 200 ? <p className='mb-3 text-white text-sm font-bold italic'>{tratarTextoContent()[1]}</p> : <p className='mb-3 font-ligh text-white texto text-sm'>{tratarTextoContent()[1]}</p>}
                         {tratarTextoContent()[1].length > 200 ? '' : <p className='texto text-sm' >{tratarTextoContent()[2]}</p>}
                     </div>
                 </div>
