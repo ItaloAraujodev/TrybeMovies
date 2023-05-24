@@ -53,8 +53,6 @@ const Movie = () => {
     return array.join(', ');
   }
 
-  console.log(resenhas)
-
   return (
     <div>
       <Nav />
